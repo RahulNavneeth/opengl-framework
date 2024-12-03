@@ -7,7 +7,17 @@
 
 OpenGLWrapper::OpenGLWrapper(int width, int height, const std::string &title)
     : window_width(width), window_height(height), window_title(title),
-      camera_rotation(0.0f, 0.0f, 0.0f), camera_translation(0.0f, 0.0f, 0.0f) {
+      camera_id(0) {
+
+  cameras.push_back(
+      Camera(glm::vec3(0.2f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f)));
+
+  cameras.push_back(
+      Camera(glm::vec3(-0.2f, 0.2f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f)));
+
+  cameras.push_back(
+      Camera(glm::vec3(-0.4f, 0.2f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f)));
+
   window = nullptr;
   vao = 0;
   vbo = 0;
@@ -319,8 +329,9 @@ void OpenGLWrapper::render_scene(
     std::vector<glm::vec3> transformedPoints(points.size());
     std::transform(points.begin(), points.end(), transformedPoints.begin(),
                    [this](const glm::vec3 &point) {
-                     return rotate(point, 0.0f, glm::vec3(0.0f, 0.0f, 0.0f),
-                                   glm::vec3(0.0f, 0.0f, 0.0f));
+                     return transform_scene(point, 0.0f,
+                                            glm::vec3(0.0f, 0.0f, 0.0f),
+                                            glm::vec3(0.0f, 0.0f, 0.0f));
                    });
     draw_solid_shape(transformedPoints, 4.0f,
                      i++ ? GLColors::GRAY : GLColors::PINK);
@@ -334,11 +345,11 @@ void OpenGLWrapper::update() {
   glClear(GL_COLOR_BUFFER_BIT);
 }
 
-glm::vec3 OpenGLWrapper::rotate(const glm::vec3 &model, float deg,
-                                const glm::vec3 &axis,
-                                const glm::vec3 &translate) {
+glm::vec3 OpenGLWrapper::transform_scene(const glm::vec3 &model, float deg,
+                                         const glm::vec3 &axis,
+                                         const glm::vec3 &translate) {
   glm::mat4 model_ortho = glm::mat4(1.0f);
-  model_ortho = glm::translate(model_ortho, camera_translation);
+  model_ortho = glm::translate(model_ortho, get_camera_position());
   glm::mat4 transformationMatrix =
       glm::rotate(model_ortho, glm::radians(deg), axis);
   glm::vec4 transformed = model_ortho * glm::vec4(model, 1.0f);
@@ -350,17 +361,19 @@ bool OpenGLWrapper::should_close() const {
 }
 
 void OpenGLWrapper::set_camera_rotation(glm::vec3 rotation) {
-  camera_rotation = rotation;
+  cameras[camera_id].set_rotation(rotation);
 }
 
-void OpenGLWrapper::set_camera_translation(glm::vec3 translation) {
-  camera_translation = translation;
+void OpenGLWrapper::set_camera_position(glm::vec3 position) {
+  cameras[camera_id].set_position(position);
 }
 
-glm::vec3 OpenGLWrapper::get_camera_rotation() const { return camera_rotation; }
+glm::vec3 OpenGLWrapper::get_camera_rotation() const {
+  return cameras[camera_id].get_rotation();
+}
 
-glm::vec3 OpenGLWrapper::get_camera_translation() const {
-  return camera_translation;
+glm::vec3 OpenGLWrapper::get_camera_position() const {
+  return cameras[camera_id].get_position();
 }
 
 void OpenGLWrapper::process_input() {
@@ -369,34 +382,38 @@ void OpenGLWrapper::process_input() {
     return;
   }
   if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-    set_camera_translation(get_camera_translation() +
-                           glm::vec3(0.0f, 0.0f, 0.1f));
+    set_camera_position(get_camera_position() - glm::vec3(0.0f, 0.0f, -0.1f));
     return;
   }
 
   if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-    set_camera_translation(get_camera_translation() +
-                           glm::vec3(0.0f, 0.0f, -0.1f));
+    set_camera_position(get_camera_position() - glm::vec3(0.0f, 0.0f, 0.1f));
     return;
   }
   if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-    set_camera_translation(get_camera_translation() +
-                           glm::vec3(-0.1f, 0.0f, 0.0f));
+    set_camera_position(get_camera_position() - glm::vec3(0.1f, 0.0f, 0.0f));
     return;
   }
   if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-    set_camera_translation(get_camera_translation() +
-                           glm::vec3(0.1f, 0.0f, 0.0f));
+    set_camera_position(get_camera_position() - glm::vec3(-0.1f, 0.0f, 0.0f));
     return;
   }
   if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-    set_camera_translation(get_camera_translation() +
-                           glm::vec3(0.0f, -0.1f, 0.0f));
+    set_camera_position(get_camera_position() - glm::vec3(0.0f, 0.1f, 0.0f));
     return;
   }
   if (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS) {
-    set_camera_translation(get_camera_translation() +
-                           glm::vec3(0.0f, 0.1f, 0.0f));
+    set_camera_position(get_camera_position() - glm::vec3(0.0f, -0.1f, 0.0f));
     return;
+  }
+  static bool camera_toggle = 0;
+  if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+    if (!camera_toggle) {
+      camera_id = (camera_id + 1) % cameras.size();
+      camera_toggle = 1;
+    }
+    return;
+  } else {
+    camera_toggle = 0;
   }
 }

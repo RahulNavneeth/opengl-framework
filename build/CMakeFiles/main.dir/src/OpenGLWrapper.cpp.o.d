@@ -1,6 +1,7 @@
 CMakeFiles/main.dir/src/OpenGLWrapper.cpp.o: \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/src/OpenGLWrapper.cpp \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/include/OpenGLWrapper.hpp \
+  /Users/rahulnavneeth/projects/sih/rlb-opengl/include/Camera.hpp \
   /opt/homebrew/include/GL/glew.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/cstddef \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__assert \

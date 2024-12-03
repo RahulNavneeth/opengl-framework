@@ -916,6 +916,7 @@ CMakeFiles/main.dir/main.cpp.o: /Users/rahulnavneeth/projects/sih/rlb-opengl/mai
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
+  /Users/rahulnavneeth/projects/sih/rlb-opengl/include/Camera.hpp \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/include/OpenGLWrapper.hpp \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/matrix.hpp \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/detail/type_mat2x2.hpp \
@@ -2069,6 +2070,7 @@ CMakeFiles/main.dir/src/OpenGLWrapper.cpp.o: /Users/rahulnavneeth/projects/sih/r
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h \
+  /Users/rahulnavneeth/projects/sih/rlb-opengl/include/Camera.hpp \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/include/OpenGLWrapper.hpp \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/matrix.hpp \
   /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/detail/type_mat2x2.hpp \
@@ -4572,6 +4574,8 @@ CMakeFiles/main.dir/vendor/glad/src/gl.c.o: /Users/rahulnavneeth/projects/sih/rl
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__type_traits/is_union.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__algorithm/ranges_is_heap_until.h:
+
+/Users/rahulnavneeth/projects/sih/rlb-opengl/include/Camera.hpp:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include/c++/v1/__algorithm/generate.h:
 

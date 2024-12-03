@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Camera.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -20,20 +21,19 @@ private:
   std::string window_title;
   GLuint vao, vbo, shader_program;
 
-  // Camera properties
-  glm::vec3 camera_rotation;
-  glm::vec3 camera_translation;
+  std::vector<Camera> cameras;
+  int camera_id;
 
   void init_opengl();
   GLuint compile_shader(const char *source, GLenum type);
   void create_shader_program();
-  glm::vec3 rotate(const glm::vec3 &model, float deg, const glm::vec3 &axis,
-                   const glm::vec3 &translate);
+  glm::vec3 transform_scene(const glm::vec3 &model, float deg,
+                            const glm::vec3 &axis, const glm::vec3 &translate);
 
   void set_camera_rotation(glm::vec3 rotation);
-  void set_camera_translation(glm::vec3 translation);
+  void set_camera_position(glm::vec3 translation);
   glm::vec3 get_camera_rotation() const;
-  glm::vec3 get_camera_translation() const;
+  glm::vec3 get_camera_position() const;
 
 public:
   OpenGLWrapper(int width, int height, const std::string &title);

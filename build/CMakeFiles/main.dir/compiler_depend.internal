@@ -917,6 +917,7 @@ CMakeFiles/main.dir/main.cpp.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h
+ /Users/rahulnavneeth/projects/sih/rlb-opengl/include/Camera.hpp
  /Users/rahulnavneeth/projects/sih/rlb-opengl/include/OpenGLWrapper.hpp
  /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/matrix.hpp
  /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/detail/type_mat2x2.hpp
@@ -2071,6 +2072,7 @@ CMakeFiles/main.dir/src/OpenGLWrapper.cpp.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h
+ /Users/rahulnavneeth/projects/sih/rlb-opengl/include/Camera.hpp
  /Users/rahulnavneeth/projects/sih/rlb-opengl/include/OpenGLWrapper.hpp
  /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/matrix.hpp
  /Users/rahulnavneeth/projects/sih/rlb-opengl/vendor/glm/glm/detail/type_mat2x2.hpp
